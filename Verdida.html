@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple carousel · example</title>
+    <style>
+        /* just the basics — no extra decorations */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0eaff;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .card {
+            max-width: 700px;
+            width: 100%;
+            background: rgb(255, 255, 255);
+            border-radius: 2rem;
+            padding: 2rem 1.5rem 2.5rem 1.5rem;
+            box-shadow: 0 15px 30px #b9a6dd;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c2152;
+            margin-bottom: 1.8rem;
+            font-weight: 500;
+            font-size: 2rem;
+        }
+
+        /* ---------- SIMPLE CAROUSEL ---------- */
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.2rem;
+            scroll-snap-type: x mandatory;
+            padding: 0.5rem 0.2rem 1.5rem 0.2rem;
+            /* hide scrollbar if you want cleaner look (optional) */
+            scrollbar-width: thin;
+            scrollbar-color: #4671ff #e5d9ff;
+        }
+
+        /* for Chrome/Safari */
+        .carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+        .carousel::-webkit-scrollbar-track {
+            background: #e5d9ff;
+            border-radius: 20px;
+        }
+        .carousel::-webkit-scrollbar-thumb {
+            background: #4250ce;
+            border-radius: 20px;
+        }
+
+        .carousel-item {
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+            width: 220px;
+            height: 150px;
+            background: #4580ee;
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 8px 12px #030b74;
+            border: 3px solid white;
+        }
+
+        /* make images fit (if you use real images) */
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1.4rem;
+        }
+
+        .note {
+            margin-top: 1.5rem;
+            color: #4a3977;
+            background: #eee5ff;
+            padding: 0.8rem 1.2rem;
+            border-radius: 3rem;
+            font-size: 1rem;
+        }
+
+        .nav {
+            margin-top: 1.5rem;
+            color: #4a3977;
+            background: #eee5ff;
+            padding: 0.8rem 1.2rem;
+            border-radius: 3rem;
+            font-size: 1rem;
+            display: flex;
+            gap: 70px;
+        }
+
+        button {
+            margin-top: 1.5px;
+            color: #4a3977;
+            background: #eee5ff;
+            padding: 0.8px 0.8px;
+            border-radius: 7px;
+            font-size: 15px;
+            display: flex;
+            gap: 0.5px;
+            background-color: rgb(177, 177, 177);
+            text-decoration: none;
+        }
+        button:hover {
+            background-color: white;
+        }
+
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🖼️ simple carousel</h2>
+
+        <!-- === CAROUSEL (only HTML + CSS) === -->
+        <div class="carousel">
+            <!-- slide 1 (using colored divs with emoji – you can replace with <img> ) -->
+            <div class="carousel-item" id="item-1"><img src="https://scontent.fceb6-1.fna.fbcdn.net/v/t39.30808-6/626062701_1400147775190333_2438740855175750927_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=e06c5d&_nc_eui2=AeF0kM99AZHSc9fQw0l-7PnFHw08CS-03T4fDTwJL7TdPl34GaaIPvDtKhWzl9iZnNW8XInK_euboLATtyItbsGE&_nc_ohc=RUtG7dUTFRYQ7kNvwFGnZas&_nc_oc=AdkJ0ygnZMVd59CCCG2UAAB5KuTfFShB4-z5j3TiQRJwQ5PKvWNVjywUlBal8tdD11g&_nc_zt=23&_nc_ht=scontent.fceb6-1.fna&_nc_gid=hZEVEBXDV4jQYb8LVtbMYg&_nc_ss=8&oh=00_AfwwENtOaZwwh6xXrhdPE6-wKAPnqmSg-hyeCl8Mrg3r7w&oe=69B96F42" alt="dog"></div>
+            <div class="carousel-item" id="item-2"><img src="https://th.bing.com/th/id/OIP.URs9aH_NuZaEUyO_0DO0owHaF6?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="prv"></div>
+            <div class="carousel-item" id="item-3"><img src="https://i.pinimg.com/originals/72/b2/a9/72b2a9120cedf2ab47e8ba2f50592d6f.jpg?nii=t" alt="67"></div>
+            <div class="carousel-item" id="item-4"><img src="https://th.bing.com/th/id/OIP.18Y4MKugLYS3WH0EWUA-AQHaE7?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"></div>
+            <div class="carousel-item" id="item-5"><img src="https://i.pinimg.com/originals/89/92/56/899256735b3d9eb015a5a3f26e9c7fac.jpg" alt="flight"></div>
+            <div class="carousel-item" id="item-6"><img src="https://th.bing.com/th/id/OIP.E5RwWVk_1V5HahVroLFk4gHaJE?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="speed"></div>
+        </div>
+
+        <div class="nav">
+            <button><a href="#item-1">Slide 1</a></button>
+            <button><a href="#item-2">Slide 2</a></button>
+            <button><a href="#item-3">Slide 3</a></button>
+            <button><a href="#item-4">Slide 4</a></button>
+            <button><a href="#item-5">Slide 5</a></button>
+            <button><a href="#item-6">Slide 6</a></button>
+        </div>
+
+        <div class="note">
+            ⬅️ swipe / drag →  ·  snap enabled  ·  pure CSS
+        </div>
+
+        <!-- short explanation -->
+        <p style="margin-top: 1.5rem; color:#3c2d66; background:#f3ecff; padding:0.6rem; border-radius:3rem;">
+            ✔️ <code>display: flex</code> + <code>overflow-x: auto</code> + <code>scroll-snap-type</code>
+        </p>
+    </div>
+</body>
+</html>
